@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npx serve app -l 3000",
+    "start": "npx serve app -l 3006",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "install:browsers": "playwright install"
