@@ -1,0 +1,27 @@
+# UI Locator Repair Playground
+
+This repository is intentionally designed to test an agent's ability to
+repair UI tests after UI changes.
+
+## Scenario
+
+A UI test fails because a locator used in Playwright tests is no longer valid
+after HTML changes.
+
+The agent is expected to:
+1. Analyze the failing test
+2. Identify what changed in the HTML
+3. Update the locator
+4. Open a MR with the fix
+
+## Stack
+- Playwright
+- Plain HTML (no framework)
+
+## Usage
+
+```bash
+npm install
+npm run install:browsers
+npm run start
+npm test
