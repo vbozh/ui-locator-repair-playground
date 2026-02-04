@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test('user can submit login form', async ({ page }) => {
-  await page.goto('http://localhost:3006');
+test('login button logs the user in', async ({ page }) => {
+  await page.goto('/');
 
-  await page.click('#submit-btn');
-  await expect(page.locator('#submit-btn')).toBeVisible();
+  // The login button was migrated from an `id` locator to a `data-testid`.
+  // Use test id to keep the selector stable across UI refactors.
+  await page.getByTestId('login-button').click();
+
+  await expect(page.getByTestId('login-message')).toHaveText('Logged in');
 });
