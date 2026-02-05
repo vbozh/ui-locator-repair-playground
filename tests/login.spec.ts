@@ -1,8 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-test('user can submit login form', async ({ page }) => {
-  await page.goto('http://localhost:3006');
+test('login', async ({ page }) => {
+  await page.goto('/');
 
-  await page.click('#submit-btn');
-  await expect(page.locator('#submit-btn')).toBeVisible();
+  await page.fill('#username', 'testuser');
+  await page.fill('#password', 'password');
+
+  // Button locator was changed in the app from `id` to `data-testid`.
+  await page.getByTestId('login-button').click();
+
+  await expect(page.locator('#message')).toHaveText('Login successful');
 });
